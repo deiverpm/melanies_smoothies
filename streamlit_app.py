@@ -2,6 +2,7 @@
 import streamlit as st
 from snowflake.snowpark.functions import col
 import requests
+import pandas as pd
 # Write directly to the app
 st.title(f":whale: Customize your Smoothie :balloon: :alien:")
 st.write(
@@ -21,7 +22,7 @@ my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT
 
 # Convert the Snowpark Dataframe to a Pandas so we can use the LOC function
 pd_df = my_dataframe.to_pandas()
-st.data_frane(pd_df)
+st.data_frame(pd_df)
 st.stop()
 
 ingredients_list = st.multiselect(
